@@ -1,14 +1,15 @@
-const baseURL = "https://api.weatherapi.com/v1/current.json?key=885e520abb784ec1a4654321253107"
-
+const baseURL = "https://api.weatherapi.com/v1/current.json?key="
+const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+console.log(apiKey);
 export const getWeatherDataForCity = async(city) =>{
-    const responce = await fetch(`${baseURL}&q=${city}&aqi=yes`);
+    const responce = await fetch(`${baseURL}${apiKey}&q=${city}&aqi=no`);
     return await responce.json()
 
 }
 
 
 export const getWeatherDataForLocation = async(lat, lon) =>{
-    const responce = await fetch(`${baseURL}&q=${lat},${lon}&aqi=no`);
+    const responce = await fetch(`${baseURL}${apiKey}&q=${lat},${lon}&aqi=no`);
     return await responce.json()
 
 }
